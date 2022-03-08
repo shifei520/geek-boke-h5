@@ -10,7 +10,7 @@ export default function App() {
   return (
     <Router history={history}>
       <div className="app">
-        <div></div>
+        <em></em>
         <Suspense fallback={<div>loading...</div>}>
           <Switch>
             <Redirect exact from="/" to="/home"></Redirect>
