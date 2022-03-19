@@ -11,8 +11,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import classnames from 'classnames'
 import EditList from '../EditList'
 import dayjs from 'dayjs'
-import { logout } from '@/store/actions/login'
+import { saveToken } from '@/store/actions/login'
 import { useHistory } from 'react-router-dom'
+import { removeTokenInfo } from '@/utils/storage'
 
 const actions = {
   photo: [
@@ -87,7 +88,13 @@ export default function Edit() {
       content: '确认退出登录？'
     })
     if (result) {
-      dispatch(logout())
+      removeTokenInfo()
+      dispatch(
+        saveToken({
+          token: '',
+          refresh_token: ''
+        })
+      )
       history.replace('/login')
     }
   }

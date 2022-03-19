@@ -40,5 +40,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <% if(process.env.NODE_ENV === 'production') { %>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/cjs/react-jsx-dev-runtime.development.js"></script>
+    <% } %>
   </body>
 </html>

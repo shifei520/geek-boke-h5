@@ -1,13 +1,22 @@
 const {
   override,
   addWebpackAlias,
-  addPostcssPlugins
+  addPostcssPlugins,
+  addWebpackExternals
 } = require('customize-cra')
 const path = require('path')
 const px2viewport = require('postcss-px-to-viewport')
 const resolve = (dir) => path.join(__dirname, '.', dir)
 
+const obj =
+  process.env.NODE_ENV === 'production'
+    ? {
+        react: 'React'
+      }
+    : {}
+const externals = addWebpackExternals(obj)
 module.exports = override(
+  externals,
   addWebpackAlias({
     ['@']: resolve('src')
   }),
